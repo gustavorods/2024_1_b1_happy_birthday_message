@@ -40,7 +40,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(
     showBackground = true, // background
     name = "Gustavo design", // "Coloca seu nome do lado de GreetingPreview"
-    showSystemUi = true // Moostrar seu design em um sistema real
+    showSystemUi = true // Mostrar seu design em um sistema real
 
 )
 @Composable
