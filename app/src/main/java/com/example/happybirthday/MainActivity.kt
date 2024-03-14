@@ -22,6 +22,8 @@ import androidx.compose.ui.unit.sp
 import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,9 +35,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                   GreetingText(message = "Happy Birthday Lorena",
-                                from = "From Gu",
-                                modifier = Modifier.padding(8.dp))
+                   GreetingImage(
+                       message = getString(R.string.happy_birthday_text),
+                       from = getString(R.string.signatura_text),
+                   )
                 }
             }
         }
@@ -58,7 +61,7 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
             fontSize = 36.sp,
             modifier = Modifier
                 .padding(16.dp)
-                .align(alignment = Alignment.End)
+                .align(alignment = Alignment.CenterHorizontally)
         )
     }
 }
@@ -69,9 +72,11 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
     Box(modifier) {
         Image(
             painter = image,
-            contentDescription = null
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            alpha = 0.5f
         )
-        GreetingImage(
+        GreetingText(
             message = message ,
             from = from,
             modifier = Modifier
@@ -86,8 +91,8 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
         GreetingImage(
-            message = "Happy Birthday Lorena!",
-            from = "From Gu"
+            message = stringResource(R.string.happy_birthday_text),
+            from = stringResource(R.string.signatura_text)
         )
     }
 }
